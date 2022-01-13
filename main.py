@@ -2,18 +2,19 @@ import perlin_noise
 import matplotlib.pyplot as plt
 import mpl_toolkits
 import numpy as np
+import random
 
 #Takes awhile to run
 
-
 class terrain:
     __pic = []
-    def __init__(self, xBound, yBound, zBound, scale):
+    def __init__(self, xBound, yBound, scale, oct, seed):
         self.xBound = xBound
         self.yBound = yBound
-        self.zBound = zBound
         self.scale = scale
-        noise = perlin_noise.PerlinNoise(octaves=10, seed=4)
+        self.oct = oct
+        self.seed = seed
+        noise = perlin_noise.PerlinNoise(octaves=self.oct, seed=self.seed)
         for i in range(self.xBound):
             row = []
             for j in range(self.yBound):
@@ -33,14 +34,15 @@ class terrain:
         yArranged = np.arange(0, self.yBound, 1)
         X, Y = np.meshgrid(xArranged, yArranged)
         Z = np.array(self.__pic)
-        axes.plot_surface(X, Y, Z)
+        axes.set_zlim3d(0, 1)
+        axes.plot_surface(X, Y, Z, cmap="terrain")
         plt.show()
 
     def colorTerrain(self):
         pass
 
 def main():
-    terrain1 = terrain(200, 200, 100, 0.25)
+    terrain1 = terrain(100, 100, 0.5, random.randint(1, 10), random.randint(1, 10))
     #terrain1.printNoise()
     terrain1.createShape()
 
