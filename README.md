@@ -8,4 +8,6 @@ Required libraries to install:
 
 "pip install matplotlib"
 
+"pip install pillow"
+
 Then it should work properly
