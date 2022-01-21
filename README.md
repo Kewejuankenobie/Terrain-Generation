@@ -1,5 +1,5 @@
 # Terrain-Generation
-This project uses Perlin Noise to generate terrain in Python using matplotlib.
+This project uses Perlin Noise to generate terrain in Python 3.10 using matplotlib.
 Required libraries to install:
 
 "pip install perlin-noise"
